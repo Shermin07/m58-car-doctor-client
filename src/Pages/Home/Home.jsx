@@ -1,12 +1,15 @@
+import About from "../About/About";
 import Banner from "./Banner/Banner";
 
 
 const Home = () => {
     return (
         <div>
-          <div >
+          
             <Banner></Banner>
-          </div>
+           <About></About>
+         
+          
         </div>
     );
 };

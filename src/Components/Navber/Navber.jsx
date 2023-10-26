@@ -33,7 +33,7 @@ const navLinks = <>
           </ul>
         </div>
         <div className="navbar-end">
-        <button className="btn btn-outline btn-error">Appoinment</button>
+        <button className="btn btn-outline btn-primary">Appoinment</button>
         </div>
       </div>
     );

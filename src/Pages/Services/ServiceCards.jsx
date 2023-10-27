@@ -8,8 +8,8 @@ const ServiceCards = ({service}) => {
           <img src={img} alt="Car" className="rounded-xl" />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">{title}</h2>
-          <p>Price:{price}$</p>
+          <h2 className="card-title text-white">{title}</h2>
+          <p className="text-white">Price:{price}$</p>
         
         </div>
       </div>

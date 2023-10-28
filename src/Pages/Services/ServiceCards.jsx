@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ServiceCards = ({service}) => {
@@ -10,7 +11,7 @@ const ServiceCards = ({service}) => {
         <div className="card-body items-center text-center">
           <h2 className="card-title text-white">{title}</h2>
           <p className="text-white">Price:{price}$</p>
-        
+        <Link  to={`/checkout/${_id}`} className="btn">Book now</Link>
         </div>
       </div>
     );

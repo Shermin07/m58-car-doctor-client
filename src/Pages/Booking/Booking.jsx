@@ -8,9 +8,30 @@ import BookingRow from "./BookingRow";
 
 
 const Booking = () => {
-
     const {user} = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
+
+
+    const  handleDelete = id =>{
+
+        const proceed = confirm('are you want to delete')
+        if(proceed){
+            fetch(`http://localhost:5000/booking/${id}`,{
+                method:'DELETE'
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data)
+                if(data.deletedCount >0){
+                    alert('deleted successfully')
+                    const remaining = bookings?.filter(booking => booking._id !== id)
+                    setBookings(remaining)  // delete hoye jabe baki guli thakbe
+                }
+            })
+        }
+    }
+
+  
 
 
   useEffect( () =>{
@@ -24,8 +45,9 @@ const Booking = () => {
   } ,[])
 
     return (
-        <div className="overflow-x-auto">
-        <table className="table">
+     <div>
+           <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           {/* head */}
           <thead>
             <tr>
@@ -33,19 +55,25 @@ const Booking = () => {
                 <label>
                   <input type="checkbox" className="checkbox" />
                 </label>
-              </th>
+                 </th>
               <th>Image</th>
-              <th>Name</th>
-              <th>Price</th>
+              <th>Customer Name</th>
               <th>Date</th>
-              <th></th>
+              <th>Price</th>
+              <th>Status</th>
+            
+             
+             
             </tr>
           </thead>
           <tbody>
          
          {
             bookings?.map(booking => <BookingRow key = {booking._id} 
-             booking={booking}>
+             booking={booking}
+             handleDelete={handleDelete}
+             
+             >
 
             </BookingRow>)
          }
@@ -57,6 +85,7 @@ const Booking = () => {
           
         </table>
       </div>
+     </div>
     );
 };
 

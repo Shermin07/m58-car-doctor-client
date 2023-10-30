@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
 
-const BookingRow = ({booking,handleDelete}) => {
+const BookingRow = ({booking,handleDelete,handleUpdate}) => {
 
-    const {_id,customerName,email,date, service,price,img} = booking
+    const {_id,customerName,email,date, service,price,img, status} = booking
     return (
        
           
@@ -31,7 +31,9 @@ const BookingRow = ({booking,handleDelete}) => {
               <td>{date}</td>
               <td>${price}</td>
               <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+               {  status === 'confirm' ? <span className='font-bold  text-primary'>confirmed </span>:
+                 <button onClick={() => handleUpdate(_id)} className="btn btn-ghost btn-xs"> please confirm</button>
+               }
               </th>
             </tr>  
        

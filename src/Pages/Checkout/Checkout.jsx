@@ -26,7 +26,7 @@ const Checkout = () => {
             price, 
             date,
             img,
-             email,
+            email,
              title,
              service: _id, 
              service_id
@@ -36,7 +36,7 @@ const Checkout = () => {
         // post korar jonno fetch korbo ,add korbo post method ,same url name as beckend
         fetch("http://localhost:5000/booking",{
             method : 'POST',
-            Headers:{
+            headers:{
                 'content-type': 'application/json'
             },
             body: JSON.stringify(booking) // object er name
@@ -44,6 +44,9 @@ const Checkout = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data)
+            if(data.insertedId){
+                alert('service book succesfully')
+            }
         })
 
 

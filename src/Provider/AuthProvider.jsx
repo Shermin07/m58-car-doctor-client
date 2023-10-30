@@ -1,8 +1,9 @@
+/* eslint-disable no-unreachable */
 
 
 import { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/firebase.init';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
  export const auth = getAuth(app);
  export const AuthContext = createContext() ;
@@ -39,12 +40,20 @@ const AuthProvider = ({children}) => {
     },
     [])
 
+    // step3:: logout
+
+    const logOut = () =>{
+        return  signOut(auth) ;
+        setLoading(true)
+    }
+
 
     const authInfo = {
         user,
         loading,
         createUser,
-        signIn
+        signIn,
+        logOut
 
     }
     return (
